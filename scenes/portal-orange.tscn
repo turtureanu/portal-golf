@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://7qc881jm8u4x"]
+
+[ext_resource type="PackedScene" uid="uid://c4n0hlqy2i0k2" path="res://scenes/portal.tscn" id="1_yepuw"]
+[ext_resource type="Texture2D" uid="uid://cg86g6f5wxfr7" path="res://assets/portal-orange-sheet.png" id="2_yepuw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ruae"]
+atlas = ExtResource("2_yepuw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rtrd"]
+atlas = ExtResource("2_yepuw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s72tv"]
+atlas = ExtResource("2_yepuw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r1ha"]
+atlas = ExtResource("2_yepuw")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0t82"]
+atlas = ExtResource("2_yepuw")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lk244"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ruae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rtrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s72tv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r1ha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0t82")
+}],
+"loop": true,
+"name": &"portal-orange",
+"speed": 5.0
+}]
+
+[node name="Portal-orange" type="Node2D"]
+
+[node name="Portal" parent="." instance=ExtResource("1_yepuw")]
+
+[node name="CollisionShape2D" parent="Portal/Area2D" index="0"]
+position = Vector2(-9.5, 0)
+rotation = 1.5708
+one_way_collision = true
+one_way_collision_margin = 0.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Portal"]
+position = Vector2(0, 9.53674e-07)
+scale = Vector2(2.12007, 2.15336)
+sprite_frames = SubResource("SpriteFrames_lk244")
+animation = &"portal-orange"
+autoplay = "portal-orange"
+flip_h = true
+
+[editable path="Portal"]

@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://3ktu30sukpp6"]
+
+[ext_resource type="Script" uid="uid://bkqt4mk1nnvax" path="res://scripts/next_level_menu.gd" id="1_ayruf"]
+[ext_resource type="FontFile" uid="uid://bgac0mltgsgp8" path="res://fonts/slkscre.ttf" id="2_a8s7d"]
+[ext_resource type="FontFile" uid="uid://c0pnpytackm87" path="res://fonts/slkscrb.ttf" id="3_2kl0q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v3vkc"]
+bg_color = Color(0.182765, 0.221782, 0.219035, 0.784314)
+
+[node name="NextLevelMenu" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ayruf")
+
+[node name="Panel" type="Panel" parent="."]
+z_index = 15
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v3vkc")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+offset_left = 335.0
+offset_top = 350.0
+offset_right = 581.0
+offset_bottom = 382.0
+theme_override_constants/separation = 12
+
+[node name="MainMenu" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_a8s7d")
+text = "Main menu"
+
+[node name="Continue" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_a8s7d")
+text = "Continue"
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.5
+offset_top = -173.0
+offset_right = 65.5
+offset_bottom = -150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_2kl0q")
+theme_override_font_sizes/font_size = 24
+text = "Level X complete"
+horizontal_alignment = 1
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="ready" from="Panel" to="." method="_on_panel_ready"]
+[connection signal="pressed" from="Panel/HBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhrk82vnk4dl0"]
+
+[ext_resource type="Script" uid="uid://cp2h7ekty37hb" path="res://scripts/hole.gd" id="1_a2ebe"]
+[ext_resource type="Texture2D" uid="uid://due0ek2a4avio" path="res://assets/flag.png" id="1_iyxdx"]
+[ext_resource type="Texture2D" uid="uid://ddhkw8me1n6cx" path="res://assets/hole.png" id="2_a2ebe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_spnof"]
+radius = 7.07107
+
+[node name="Hole" type="Node2D"]
+
+[node name="Hole" type="Area2D" parent="."]
+script = ExtResource("1_a2ebe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hole"]
+shape = SubResource("CircleShape2D_spnof")
+
+[node name="Flag" type="Sprite2D" parent="Hole"]
+z_index = 10
+position = Vector2(-15, -39)
+texture = ExtResource("1_iyxdx")
+
+[node name="Hole" type="Sprite2D" parent="Hole" groups=["Ball"]]
+z_index = 1
+texture = ExtResource("2_a2ebe")
+
+[node name="NextLevelTimer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="Hole" to="Hole" method="_on_area_entered"]
+[connection signal="body_shape_entered" from="Hole" to="Hole" method="_on_body_shape_entered"]
+[connection signal="timeout" from="NextLevelTimer" to="Hole" method="_on_next_level_timer_timeout"]

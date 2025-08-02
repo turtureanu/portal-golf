@@ -1,0 +1,68 @@
+extends CharacterBody2D
+
+const BASE_SPEED = 1200
+const SLOWDOWN_SPEED = 200
+const BOUNCE_LOSS = 0.4 # 0.4 -> 40 % speed loss on bounce
+const AIM_DEADZONE = 0.2
+
+const INPUT_METHOD = "controller"
+
+var direction = Vector2i(0, 0)
+var stopped = false
+
+@onready var arrow: Sprite2D = $Arrow
+const ARROW_GRADIENT = preload("res://assets/arrow_gradient.tres")
+
+func _ready() -> void:
+	InputMap.action_set_deadzone("left", AIM_DEADZONE)
+	InputMap.action_set_deadzone("right", AIM_DEADZONE)
+	InputMap.action_set_deadzone("up", AIM_DEADZONE)
+	InputMap.action_set_deadzone("down", AIM_DEADZONE)
+	
+
+func _physics_process(delta: float) -> void:
+	# x and y
+	var inputs = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
+	var confirmed = Input.is_action_just_pressed("shoot")
+
+	if velocity.x == 0.0 and velocity.y == 0.0:
+		stopped = true
+
+	# handle arrow showing only when aiming
+	if stopped == true and (inputs.x != 0.0 or inputs.y != 0.0):
+		arrow.show()
+		# distance from joystick middle
+		var distance_from_middle = sqrt(inputs.x ** 2 + inputs.y ** 2)
+		arrow.scale = Vector2((1 +distance_from_middle)**2 + clamp(distance_from_middle, 0.0, 1.0), arrow.scale.y)
+		arrow.modulate = Color(ARROW_GRADIENT.sample(distance_from_middle))
+	else:
+		arrow.hide()
+
+	if stopped:
+		if INPUT_METHOD == "controller":
+			look_at(position + inputs.normalized())
+		else:
+			look_at(get_global_mouse_position())
+
+		
+		if confirmed:
+			stopped = false
+			velocity.x = BASE_SPEED * inputs.x
+			velocity.y = BASE_SPEED * inputs.y
+
+			if inputs.x < 0: # left
+				direction.x = -1
+			elif inputs.x > 0: #right
+				direction.x = 1
+			elif inputs.y < 0: #up
+				direction.y = -1
+			elif inputs.y > 0: #down
+				direction.y = 1
+
+	var collision = move_and_collide(velocity * delta)
+	
+	if not stopped:
+		velocity = velocity.move_toward(Vector2.ZERO, SLOWDOWN_SPEED * delta)
+	
+	if collision:
+		velocity = velocity.bounce(collision.get_normal()) * (1-BOUNCE_LOSS)
