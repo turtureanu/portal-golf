@@ -137,9 +137,11 @@ scale = Vector2(2.5, 2.5)
 
 [node name="Portal-blue" parent="." instance=ExtResource("6_272bh")]
 position = Vector2(408, 400)
+scale = Vector2(1.5, 1.5)
 
 [node name="Portal-orange" parent="." instance=ExtResource("7_5vw27")]
 position = Vector2(768, 456)
+scale = Vector2(1.5, 1.5)
 
 [node name="Classic-ball" type="Sprite2D" parent="."]
 position = Vector2(264, 386)
