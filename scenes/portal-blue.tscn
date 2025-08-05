@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dsn0ir5i8qxck" path="res://assets/portal-blue-sheet.png" id="2_ipb40"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ipb40"]
-size = Vector2(68, 19)
+size = Vector2(42.0001, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hm38n"]
 atlas = ExtResource("2_ipb40")
@@ -50,19 +50,18 @@ animations = [{
 }]
 
 [node name="Portal-blue" type="Node2D"]
-position = Vector2(-5, 9)
 
 [node name="Portal" parent="." instance=ExtResource("1_ipb40")]
-position = Vector2(5.73778, -9.64849)
 
 [node name="CollisionShape2D" parent="Portal/Area2D" index="0"]
-position = Vector2(8.76222, 0.648495)
+position = Vector2(-2.5, -4.86769e-07)
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_ipb40")
-one_way_collision = true
+
+[node name="Destination" parent="Portal/Area2D" index="1"]
+position = Vector2(-41, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Portal"]
-position = Vector2(-0.737778, 0.648495)
 scale = Vector2(2.13319, 2.13319)
 sprite_frames = SubResource("SpriteFrames_t17p7")
 animation = &"portal-blue"

@@ -13,21 +13,21 @@
 [ext_resource type="PackedScene" uid="uid://7qc881jm8u4x" path="res://scenes/portal-orange.tscn" id="12_yey5w"]
 [ext_resource type="PackedScene" uid="uid://dllqhb735kncc" path="res://scenes/portal-blue.tscn" id="13_wdqjf"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dw8bf"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xlcr5"]
 texture = ExtResource("3_2u1qw")
 0:0/0 = 0
 1:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v3ssi"]
 texture = ExtResource("4_rqyf7")
 0:0/0 = 0
 1:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lquwl"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_acu7v"]
 texture = ExtResource("5_klk8t")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -42,7 +42,7 @@ texture = ExtResource("5_klk8t")
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mycd"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mguoy"]
 texture = ExtResource("6_4wrjj")
 0:0/0 = 0
 0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -53,7 +53,7 @@ texture = ExtResource("6_4wrjj")
 1:1/0 = 0
 1:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kek77"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2u1qw"]
 texture = ExtResource("7_ps0ek")
 0:0/0 = 0
 0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -64,7 +64,7 @@ texture = ExtResource("7_ps0ek")
 1:1/0 = 0
 1:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4c57u"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rqyf7"]
 texture = ExtResource("8_s28pe")
 0:0/0 = 0
 0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -75,7 +75,7 @@ texture = ExtResource("8_s28pe")
 1:1/0 = 0
 1:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_efxa6"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_klk8t"]
 texture = ExtResource("9_uamrp")
 0:0/0 = 0
 0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -90,20 +90,20 @@ texture = ExtResource("9_uamrp")
 physics_layer_0/collision_layer = 1
 physics_layer_1/collision_layer = 2
 physics_layer_1/collision_mask = 2
-sources/1 = SubResource("TileSetAtlasSource_1bvp3")
-sources/2 = SubResource("TileSetAtlasSource_lquwl")
-sources/3 = SubResource("TileSetAtlasSource_7mycd")
-sources/4 = SubResource("TileSetAtlasSource_kek77")
-sources/5 = SubResource("TileSetAtlasSource_4c57u")
-sources/6 = SubResource("TileSetAtlasSource_efxa6")
-sources/0 = SubResource("TileSetAtlasSource_dw8bf")
+sources/1 = SubResource("TileSetAtlasSource_v3ssi")
+sources/2 = SubResource("TileSetAtlasSource_acu7v")
+sources/3 = SubResource("TileSetAtlasSource_mguoy")
+sources/4 = SubResource("TileSetAtlasSource_2u1qw")
+sources/5 = SubResource("TileSetAtlasSource_rqyf7")
+sources/6 = SubResource("TileSetAtlasSource_klk8t")
+sources/0 = SubResource("TileSetAtlasSource_xlcr5")
 
 [sub_resource type="GDScript" id="GDScript_xlcr5"]
 
-[node name="Level 0" type="Node"]
+[node name="Level 0" type="Node2D"]
 script = ExtResource("1_acu7v")
 
-[node name="Player" parent="." instance=ExtResource("2_mguoy")]
+[node name="Player" parent="." groups=["Ball"] instance=ExtResource("2_mguoy")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["Ball"]]
 position = Vector2(255, 83)
@@ -114,25 +114,28 @@ tile_set = SubResource("TileSet_272bh")
 position = Vector2(835, -507)
 script = SubResource("GDScript_xlcr5")
 
-[node name="Portal-orange" parent="." instance=ExtResource("12_yey5w")]
-position = Vector2(513, -505)
-
-[node name="Destination" parent="Portal-orange/Portal/Area2D" index="1"]
-position = Vector2(-173, 1)
-
 [node name="Portal-blue" parent="." instance=ExtResource("13_wdqjf")]
-position = Vector2(374, -494)
+position = Vector2(381, -505)
+
+[node name="CollisionShape2D" parent="Portal-blue/Portal/Area2D" index="0"]
+position = Vector2(9.49994, -3.05176e-05)
 
 [node name="Destination" parent="Portal-blue/Portal/Area2D" index="1"]
-position = Vector2(170.262, -2.3515)
+position = Vector2(166, -2)
+
+[node name="Portal-orange" parent="." instance=ExtResource("12_yey5w")]
+position = Vector2(513, -507)
+
+[node name="CollisionShape2D" parent="Portal-orange/Portal/Area2D" index="0"]
+position = Vector2(-9.75, 0)
+
+[node name="Destination" parent="Portal-orange/Portal/Area2D" index="1"]
+position = Vector2(-166, 2)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="timeout" from="Hole/NextLevelTimer" to="Hole" method="_on_next_level_timer_timeout"]
-[connection signal="draw" from="Portal-orange/Portal" to="Portal-orange" method="_on_portal_draw"]
 
 [editable path="Player"]
-[editable path="Hole"]
-[editable path="Portal-orange"]
-[editable path="Portal-orange/Portal"]
 [editable path="Portal-blue"]
 [editable path="Portal-blue/Portal"]
+[editable path="Portal-orange"]
+[editable path="Portal-orange/Portal"]

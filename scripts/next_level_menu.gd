@@ -2,16 +2,11 @@ extends Control
 
 @onready var menu_button: Button = $Panel/MarginContainer/VBoxContainer/HBoxContainer/MenuButton
 @onready var next_level_button: Button = $Panel/MarginContainer/VBoxContainer/HBoxContainer/NextLevelButton
-
-	
-
 @onready var level_complete: Label = $Panel/MarginContainer/VBoxContainer/LevelComplete
 
 func _on_visibility_changed() -> void:
 	if visible and next_level_button:
-		
 		level_complete.text = str("Level ", Levels.current_level, " complete!")
-		print(Levels.current_level)
 		next_level_button.grab_focus()
 
 

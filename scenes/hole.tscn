@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://3ktu30sukpp6" path="res://scenes/next_level_menu.tscn" id="4_spnof"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_spnof"]
-radius = 7.07107
+radius = 13.0
 
 [node name="Hole" type="Node2D"]
 

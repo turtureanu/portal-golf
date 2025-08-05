@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dt1i8dei32cnv" path="res://scripts/portal.gd" id="1_v0xau"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0xau"]
-size = Vector2(68, 19)
+size = Vector2(41.9999, 48.0001)
 
 [node name="Portal" type="Node2D"]
 
