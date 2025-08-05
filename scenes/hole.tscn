@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhrk82vnk4dl0"]
+[gd_scene load_steps=6 format=3 uid="uid://bhrk82vnk4dl0"]
 
 [ext_resource type="Script" uid="uid://cp2h7ekty37hb" path="res://scripts/hole.gd" id="1_a2ebe"]
 [ext_resource type="Texture2D" uid="uid://due0ek2a4avio" path="res://assets/flag.png" id="1_iyxdx"]
 [ext_resource type="Texture2D" uid="uid://ddhkw8me1n6cx" path="res://assets/hole.png" id="2_a2ebe"]
+[ext_resource type="PackedScene" uid="uid://3ktu30sukpp6" path="res://scenes/next_level_menu.tscn" id="4_spnof"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_spnof"]
 radius = 7.07107
@@ -25,6 +26,8 @@ z_index = 1
 texture = ExtResource("2_a2ebe")
 
 [node name="NextLevelTimer" type="Timer" parent="."]
+
+[node name="NextLevelMenu" parent="." instance=ExtResource("4_spnof")]
 
 [connection signal="area_entered" from="Hole" to="Hole" method="_on_area_entered"]
 [connection signal="body_shape_entered" from="Hole" to="Hole" method="_on_body_shape_entered"]

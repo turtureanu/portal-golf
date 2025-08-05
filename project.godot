@@ -10,10 +10,15 @@ config_version=5
 
 [application]
 
-config/name="New Game Project"
+config/name="Portal Golf"
 run/main_scene="uid://dvjgie8qfe4fx"
 config/features=PackedStringArray("4.4", "Mobile")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
+
+[autoload]
+
+Levels="*res://scripts/levels.gd"
 
 [display]
 

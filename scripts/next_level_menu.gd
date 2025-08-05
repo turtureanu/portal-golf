@@ -1,14 +1,23 @@
 extends Control
 
-@onready var main_menu: Button = $Panel/HBoxContainer/MainMenu
-@onready var continue_button: Button = $Panel/HBoxContainer/Continue
+@onready var menu_button: Button = $Panel/MarginContainer/VBoxContainer/HBoxContainer/MenuButton
+@onready var next_level_button: Button = $Panel/MarginContainer/VBoxContainer/HBoxContainer/NextLevelButton
 
-
-func _on_main_menu_pressed() -> void:
-	get_tree().change_scene_to_file("res://main.tscn")
 	
 
+@onready var level_complete: Label = $Panel/MarginContainer/VBoxContainer/LevelComplete
 
 func _on_visibility_changed() -> void:
-	if visible:
-		continue_button.grab_focus()
+	if visible and next_level_button:
+		
+		level_complete.text = str("Level ", Levels.current_level, " complete!")
+		print(Levels.current_level)
+		next_level_button.grab_focus()
+
+
+func _on_menu_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://main.tscn")
+
+
+func _on_next_level_button_pressed() -> void:
+	get_tree().change_scene_to_file(Levels.next_level_scene)
