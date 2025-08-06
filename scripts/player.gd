@@ -8,9 +8,8 @@ const AIM_DEADZONE = 0.2
 const INPUT_METHOD = "controller"
 
 var direction = Vector2i(0, 0)
-var stopped = false
-
 @onready var arrow: Sprite2D = $Arrow
+
 const ARROW_GRADIENT = preload("res://assets/arrow_gradient.tres")
 
 func _ready() -> void:
@@ -18,7 +17,9 @@ func _ready() -> void:
 	InputMap.action_set_deadzone("right", AIM_DEADZONE)
 	InputMap.action_set_deadzone("up", AIM_DEADZONE)
 	InputMap.action_set_deadzone("down", AIM_DEADZONE)
-	
+	Ball.last_position = global_position
+	Ball.stopped = false
+
 
 func _physics_process(delta: float) -> void:
 	# x and y
@@ -26,10 +27,13 @@ func _physics_process(delta: float) -> void:
 	var confirmed = Input.is_action_just_pressed("shoot")
 
 	if velocity.x == 0.0 and velocity.y == 0.0:
-		stopped = true
+		if Ball.stopped == false:
+			Ball.current_position = global_position
+		
+		Ball.stopped = true
 
 	# handle arrow showing only when aiming
-	if stopped == true and (inputs.x != 0.0 or inputs.y != 0.0):
+	if Ball.stopped == true and (inputs.x != 0.0 or inputs.y != 0.0):
 		arrow.show()
 		# distance from joystick middle
 		var distance_from_middle = sqrt(inputs.x ** 2 + inputs.y ** 2)
@@ -38,7 +42,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		arrow.hide()
 
-	if stopped:
+	if Ball.stopped:
+		global_position = Ball.current_position
 		if INPUT_METHOD == "controller":
 			look_at(position + inputs.normalized())
 		else:
@@ -46,7 +51,7 @@ func _physics_process(delta: float) -> void:
 
 		
 		if confirmed:
-			stopped = false
+			Ball.stopped = false
 			velocity.x = BASE_SPEED * inputs.x
 			velocity.y = BASE_SPEED * inputs.y
 
@@ -61,8 +66,10 @@ func _physics_process(delta: float) -> void:
 
 	var collision = move_and_collide(velocity * delta)
 	
-	if not stopped:
+	if not Ball.stopped:
 		velocity = velocity.move_toward(Vector2.ZERO, SLOWDOWN_SPEED * delta)
 	
 	if collision:
 		velocity = velocity.bounce(collision.get_normal()) * (1-BOUNCE_LOSS)
+	
+	Ball.velocity = velocity

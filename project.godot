@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Levels="*res://scripts/levels.gd"
+Ball="*res://scripts/ball.gd"
 
 [display]
 
