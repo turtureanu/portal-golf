@@ -6,6 +6,8 @@ extends Control
 
 func _on_visibility_changed() -> void:
 	if visible and next_level_button:
+		print("current_level:", Levels.current_level)
+		print("next", Levels.next_level_scene)
 		level_complete.text = str("Level ", Levels.current_level, " complete!")
 		next_level_button.grab_focus()
 

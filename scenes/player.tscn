@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c22retigu4o12" path="res://assets/arrow.png" id="3_qhqgy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dqkch"]
-radius = 16.0
+radius = 12.0
 
 [node name="Player" type="Node2D"]
 
@@ -20,7 +20,7 @@ safe_margin = 0.001
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="Ball"]
-position = Vector2(-9.53674e-07, 9.53674e-07)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
