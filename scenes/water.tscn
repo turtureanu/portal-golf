@@ -51,7 +51,7 @@ frame_14/texture = ExtResource("8_55myt")
 frame_14/duration = 0.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3811"]
-size = Vector2(224, 128)
+size = Vector2(128, 64)
 
 [node name="Water" type="Node2D"]
 

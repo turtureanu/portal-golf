@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dsn0ir5i8qxck" path="res://assets/portal-blue-sheet.png" id="2_ipb40"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ipb40"]
-size = Vector2(64, 24)
+size = Vector2(64, 30.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hm38n"]
 atlas = ExtResource("2_ipb40")
