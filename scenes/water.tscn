@@ -1,7 +1,54 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfus2raatyxru"]
+[gd_scene load_steps=19 format=3 uid="uid://dfus2raatyxru"]
 
-[ext_resource type="Texture2D" uid="uid://dtx782pbvmlf0" path="res://assets/water.png" id="1_bdk6y"]
 [ext_resource type="Script" uid="uid://bddqda1vrbc1f" path="res://scripts/water.gd" id="1_s3811"]
+[ext_resource type="Texture2D" uid="uid://c2lo7eymks2tn" path="res://assets/water/wood1.png" id="2_dtvsg"]
+[ext_resource type="Texture2D" uid="uid://b5dqvrauro8y5" path="res://assets/water/wood2.png" id="3_mmdeg"]
+[ext_resource type="Texture2D" uid="uid://dvh0xfgjp7rv2" path="res://assets/water/wood11.png" id="4_ywl3n"]
+[ext_resource type="Texture2D" uid="uid://65mvhpg3psag" path="res://assets/water/wood12.png" id="5_5xfte"]
+[ext_resource type="Texture2D" uid="uid://b4uvciwucpqjm" path="res://assets/water/wood13.png" id="6_hfgk7"]
+[ext_resource type="Texture2D" uid="uid://dtk783db2fxbe" path="res://assets/water/wood14.png" id="7_8rac5"]
+[ext_resource type="Texture2D" uid="uid://dof8erpwwvvsy" path="res://assets/water/wood15.png" id="8_55myt"]
+[ext_resource type="Texture2D" uid="uid://ch0150jyasv6i" path="res://assets/water/wood3.png" id="9_x08qg"]
+[ext_resource type="Texture2D" uid="uid://bofv2kff6ukdt" path="res://assets/water/wood4.png" id="10_xckav"]
+[ext_resource type="Texture2D" uid="uid://cusbv51i2h3vl" path="res://assets/water/wood5.png" id="11_mbyf8"]
+[ext_resource type="Texture2D" uid="uid://blttgjbdjl6j7" path="res://assets/water/wood6.png" id="12_s1jhd"]
+[ext_resource type="Texture2D" uid="uid://dtcqjiysnn8jn" path="res://assets/water/wood7.png" id="13_5ihih"]
+[ext_resource type="Texture2D" uid="uid://e6pwm4k3bpwm" path="res://assets/water/wood8.png" id="14_2myf4"]
+[ext_resource type="Texture2D" uid="uid://docap5khwv2av" path="res://assets/water/wood9.png" id="15_opk7y"]
+[ext_resource type="Texture2D" uid="uid://iqtyit4ialv3" path="res://assets/water/wood10.png" id="16_fkapk"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_p1n2c"]
+frames = 15
+frame_0/texture = ExtResource("2_dtvsg")
+frame_0/duration = 0.1
+frame_1/texture = ExtResource("3_mmdeg")
+frame_1/duration = 0.1
+frame_2/texture = ExtResource("9_x08qg")
+frame_2/duration = 0.1
+frame_3/texture = ExtResource("10_xckav")
+frame_3/duration = 0.1
+frame_4/texture = ExtResource("11_mbyf8")
+frame_4/duration = 0.1
+frame_5/texture = ExtResource("12_s1jhd")
+frame_5/duration = 0.1
+frame_6/texture = ExtResource("13_5ihih")
+frame_6/duration = 0.1
+frame_7/texture = ExtResource("14_2myf4")
+frame_7/duration = 0.1
+frame_8/texture = ExtResource("15_opk7y")
+frame_8/duration = 0.1
+frame_9/texture = ExtResource("16_fkapk")
+frame_9/duration = 0.1
+frame_10/texture = ExtResource("4_ywl3n")
+frame_10/duration = 0.1
+frame_11/texture = ExtResource("5_5xfte")
+frame_11/duration = 0.1
+frame_12/texture = ExtResource("6_hfgk7")
+frame_12/duration = 0.1
+frame_13/texture = ExtResource("7_8rac5")
+frame_13/duration = 0.1
+frame_14/texture = ExtResource("8_55myt")
+frame_14/duration = 0.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3811"]
 size = Vector2(224, 128)
@@ -13,7 +60,7 @@ script = ExtResource("1_s3811")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 texture_repeat = 2
-texture = ExtResource("1_bdk6y")
+texture = SubResource("AnimatedTexture_p1n2c")
 region_enabled = true
 region_rect = Rect2(0, 0, 224, 128)
 
