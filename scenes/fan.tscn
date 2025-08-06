@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://x7u5fha6tjhy"]
+
+[ext_resource type="Script" uid="uid://dq3e7tgobi0e5" path="res://scenes/scene-scripts/fan.gd" id="1_p64dw"]
+[ext_resource type="Texture2D" uid="uid://cy407c45jnpqx" path="res://assets/fan.png" id="2_ib1wi"]
+
+[sub_resource type="Animation" id="Animation_ib1wi"]
+resource_name = "rotate"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_h3fxe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_05mpp"]
+_data = {
+&"RESET": SubResource("Animation_h3fxe"),
+&"rotate": SubResource("Animation_ib1wi")
+}
+
+[node name="Fan" type="Node2D"]
+light_mask = 3
+visibility_layer = 3
+scale = Vector2(2, 2)
+script = ExtResource("1_p64dw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+light_mask = 3
+visibility_layer = 3
+collision_layer = 3
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+visibility_layer = 3
+texture = ExtResource("2_ib1wi")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+physics_interpolation_mode = 1
+light_mask = 3
+visibility_layer = 3
+polygon = PackedVector2Array(3, -61, 7, -58, 7, -18, 35, -47, 41, -47, 45, -43, 45, -35, 17, -7, 58, -7, 61, -3, 61, 3, 58, 7, 18, 7, 47, 35, 47, 41, 43, 45, 37, 45, 7, 17, 7, 58, 3, 61, -3, 61, -7, 58, -7, 18, -35, 47, -41, 47, -45, 43, -45, 37, -17, 7, -58, 7, -61, 3, -61, -3, -58, -7, -18, -7, -47, -35, -47, -41, -43, -45, -37, -45, -7, -17, -7, -58, -3, -61)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody2D"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_05mpp")
+}
+autoplay = "rotate"

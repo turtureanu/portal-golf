@@ -12,6 +12,8 @@ var direction = Vector2i(0, 0)
 
 const ARROW_GRADIENT = preload("res://assets/arrow_gradient.tres")
 
+var last_pos = Vector2.ZERO
+
 func _ready() -> void:
 	InputMap.action_set_deadzone("left", AIM_DEADZONE)
 	InputMap.action_set_deadzone("right", AIM_DEADZONE)
@@ -19,19 +21,21 @@ func _ready() -> void:
 	InputMap.action_set_deadzone("down", AIM_DEADZONE)
 	Ball.last_position = global_position
 	Ball.stopped = false
-
+	last_pos = global_position
 
 func _physics_process(delta: float) -> void:
 	# x and y
 	var inputs = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
 	var confirmed = Input.is_action_just_pressed("shoot")
 
-	if velocity.x == 0.0 and velocity.y == 0.0:
+	if velocity.x == 0.0 and velocity.y == 0.0 and last_pos == global_position:
 		if Ball.stopped == false:
 			Ball.current_position = global_position
 		
 		Ball.stopped = true
 
+	last_pos = global_position
+	
 	# handle arrow showing only when aiming
 	if Ball.stopped == true and (inputs.x != 0.0 or inputs.y != 0.0):
 		arrow.show()
