@@ -13,6 +13,7 @@ var direction = Vector2i(0, 0)
 const ARROW_GRADIENT = preload("res://assets/arrow_gradient.tres")
 
 var last_pos = Vector2.ZERO
+var last_velocity = Vector2.ZERO
 
 func _ready() -> void:
 	InputMap.action_set_deadzone("left", AIM_DEADZONE)
@@ -24,6 +25,14 @@ func _ready() -> void:
 	last_pos = global_position
 
 func _physics_process(delta: float) -> void:
+	if last_velocity == velocity:
+		Ball.velocity = last_velocity
+	else:
+		last_velocity = velocity
+	
+	if Ball.velocity != last_velocity:
+		velocity = Ball.velocity
+	
 	# x and y
 	var inputs = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
 	var confirmed = Input.is_action_just_pressed("shoot")
@@ -38,6 +47,7 @@ func _physics_process(delta: float) -> void:
 	
 	# handle arrow showing only when aiming
 	if Ball.stopped == true and (inputs.x != 0.0 or inputs.y != 0.0):
+		Ball.strokes += 1
 		arrow.show()
 		# distance from joystick middle
 		var distance_from_middle = sqrt(inputs.x ** 2 + inputs.y ** 2)

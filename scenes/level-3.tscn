@@ -16,21 +16,21 @@
 [ext_resource type="Script" uid="uid://cigexqiw0jm0" path="res://scenes/scene-scripts/level-3-portal.gl.gd" id="13_ut7nj"]
 [ext_resource type="PackedScene" uid="uid://bhrk82vnk4dl0" path="res://scenes/hole.tscn" id="14_govof"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_govof"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l1ii0"]
 texture = ExtResource("2_6lob6")
 0:0/0 = 0
 1:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0u3fb"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t332j"]
 texture = ExtResource("3_nyndc")
 0:0/0 = 0
 1:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vvhis"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ut7nj"]
 texture = ExtResource("4_1ec8c")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -45,7 +45,7 @@ texture = ExtResource("4_1ec8c")
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dgtej"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_govof"]
 texture = ExtResource("5_woy55")
 0:0/0 = 0
 0:0/0/z_index = 1
@@ -60,7 +60,7 @@ texture = ExtResource("5_woy55")
 1:1/0/z_index = 1
 1:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v2281"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0u3fb"]
 texture = ExtResource("6_pq4ru")
 0:0/0 = 0
 0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -71,7 +71,7 @@ texture = ExtResource("6_pq4ru")
 1:1/0 = 0
 1:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7wemr"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vvhis"]
 texture = ExtResource("7_l1ii0")
 0:0/0 = 0
 0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -82,7 +82,7 @@ texture = ExtResource("7_l1ii0")
 1:1/0 = 0
 1:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hnnt6"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dgtej"]
 texture = ExtResource("8_t332j")
 0:0/0 = 0
 0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -97,13 +97,13 @@ texture = ExtResource("8_t332j")
 physics_layer_0/collision_layer = 1
 physics_layer_1/collision_layer = 2
 physics_layer_1/collision_mask = 2
-sources/1 = SubResource("TileSetAtlasSource_0u3fb")
-sources/2 = SubResource("TileSetAtlasSource_vvhis")
-sources/3 = SubResource("TileSetAtlasSource_dgtej")
-sources/4 = SubResource("TileSetAtlasSource_v2281")
-sources/5 = SubResource("TileSetAtlasSource_7wemr")
-sources/6 = SubResource("TileSetAtlasSource_hnnt6")
-sources/0 = SubResource("TileSetAtlasSource_govof")
+sources/1 = SubResource("TileSetAtlasSource_t332j")
+sources/2 = SubResource("TileSetAtlasSource_ut7nj")
+sources/3 = SubResource("TileSetAtlasSource_govof")
+sources/4 = SubResource("TileSetAtlasSource_0u3fb")
+sources/5 = SubResource("TileSetAtlasSource_vvhis")
+sources/6 = SubResource("TileSetAtlasSource_dgtej")
+sources/0 = SubResource("TileSetAtlasSource_l1ii0")
 
 [node name="Level 3" type="Node2D"]
 script = ExtResource("1_l1ii0")
