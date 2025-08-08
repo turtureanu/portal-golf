@@ -25,6 +25,7 @@ func _ready() -> void:
 	last_pos = global_position
 
 func _physics_process(delta: float) -> void:
+	print(Ball.strokes)
 	if last_velocity == velocity:
 		Ball.velocity = last_velocity
 	else:
@@ -40,14 +41,13 @@ func _physics_process(delta: float) -> void:
 	if velocity.x == 0.0 and velocity.y == 0.0 and last_pos == global_position:
 		if Ball.stopped == false:
 			Ball.current_position = global_position
-		
+			
 		Ball.stopped = true
 
 	last_pos = global_position
 	
 	# handle arrow showing only when aiming
 	if Ball.stopped == true and (inputs.x != 0.0 or inputs.y != 0.0):
-		Ball.strokes += 1
 		arrow.show()
 		# distance from joystick middle
 		var distance_from_middle = sqrt(inputs.x ** 2 + inputs.y ** 2)
@@ -65,6 +65,7 @@ func _physics_process(delta: float) -> void:
 
 		
 		if confirmed:
+			Ball.strokes += 1
 			Ball.stopped = false
 			velocity.x = BASE_SPEED * inputs.x
 			velocity.y = BASE_SPEED * inputs.y
