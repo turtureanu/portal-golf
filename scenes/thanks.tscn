@@ -1,3 +1,74 @@
-[gd_scene format=3 uid="uid://dl6eg1ymt7n0m"]
+[gd_scene load_steps=5 format=3 uid="uid://dl6eg1ymt7n0m"]
 
-[node name="Thanks" type="Node2D"]
+[ext_resource type="FontFile" uid="uid://cpfol71cm6211" path="res://fonts/slkscr.ttf" id="1_cgh8i"]
+[ext_resource type="Script" uid="uid://bx243uc3vq7yn" path="res://scenes/scene-scripts/thanks.gd" id="1_w8vyk"]
+[ext_resource type="FontFile" uid="uid://bgac0mltgsgp8" path="res://fonts/slkscre.ttf" id="2_w8vyk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8f1h5"]
+
+[node name="Thanks" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w8vyk")
+
+[node name="Panel" type="Panel" parent="."]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8f1h5")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -262.0
+offset_top = -38.5
+offset_right = 262.0
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_cgh8i")
+theme_override_font_sizes/font_size = 24
+text = "Thank you for playing!
+
+This was my first game and was made as part of Hack Club's Jumpstart V2 event!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="MenuButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.5
+offset_top = 104.0
+offset_right = 62.5
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_w8vyk")
+text = "main Menu"
+
+[connection signal="pressed" from="Panel/MenuButton" to="." method="_on_menu_button_pressed"]

@@ -13,6 +13,7 @@ config_version=5
 config/name="Portal Golf"
 run/main_scene="uid://dvjgie8qfe4fx"
 config/features=PackedStringArray("4.4", "Mobile")
+boot_splash/bg_color=Color(0.0762278, 0.123905, 0.167732, 1)
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
@@ -74,3 +75,4 @@ down={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0.202164, 0.335938, 0.359584, 1)
