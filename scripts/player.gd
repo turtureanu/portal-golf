@@ -5,7 +5,7 @@ const SLOWDOWN_SPEED = 200
 const BOUNCE_LOSS = 0.4 # 0.4 -> 40 % speed loss on bounce
 const AIM_DEADZONE = 0.2
 const MOUSE_SENSITIVITY = 3 # magic value
-var direction = Vector2i(0, 0)
+var direction = Vector2(0, 0)
 @onready var arrow: Sprite2D = $Arrow
 
 const ARROW_GRADIENT = preload("res://assets/arrow_gradient.tres")
@@ -49,11 +49,11 @@ func _physics_process(delta: float) -> void:
 
 	last_pos = global_position
 	
-	
+	var distance_from_middle
 	if Ball.stopped == true and (inputs.x != 0.0 or inputs.y != 0.0):
 		arrow.show()
 		# distance from joystick middle
-		var distance_from_middle = sqrt(inputs.x ** 2 + inputs.y ** 2) if Ball.using_controller else clamp((2 * PI * (sqrt(inputs.x ** 2 + inputs.y ** 2))) / 15, 0.0, 1.0)
+		distance_from_middle = sqrt(inputs.x ** 2 + inputs.y ** 2) if Ball.using_controller else clamp((2 * PI * (sqrt(inputs.x ** 2 + inputs.y ** 2))) / PI, 0.0, 1.0)
 		
 		arrow.scale = Vector2((1 +distance_from_middle)**2 + clamp(distance_from_middle, 0.0, 1.0), arrow.scale.y)
 		arrow.modulate = Color(ARROW_GRADIENT.sample(distance_from_middle))
@@ -70,17 +70,12 @@ func _physics_process(delta: float) -> void:
 		if confirmed:
 			Ball.strokes += 1
 			Ball.stopped = false
-			velocity.x = BASE_SPEED * inputs.x
-			velocity.y = BASE_SPEED * inputs.y
+			direction.x = clampf(inputs.x, -1.0, 1.0)
+			direction.y = clampf(inputs.y, -1.0, 1.0)
+			print(direction)
+			velocity.x = BASE_SPEED * (distance_from_middle + 0.5) * direction.x
+			velocity.y = BASE_SPEED * (distance_from_middle + 0.5) * direction.y
 
-			if inputs.x < 0: # left
-				direction.x = -1
-			elif inputs.x > 0: #right
-				direction.x = 1
-			elif inputs.y < 0: #up
-				direction.y = -1
-			elif inputs.y > 0: #down
-				direction.y = 1
 
 	var collision = move_and_collide(velocity * delta)
 	

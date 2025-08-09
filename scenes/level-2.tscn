@@ -146,8 +146,30 @@ position = Vector2(-11.125, -1.14441e-05)
 [node name="Destination" parent="Portal-orange/Portal/Area2D" index="1"]
 position = Vector2(198, -928)
 
+[node name="Label" type="Label" parent="."]
+offset_left = -64.0
+offset_top = 38.0
+offset_right = 64.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0, 0.44, 0.256667, 1)
+text = "Hole 3
+4 strokes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -64.0
+offset_top = -128.0
+offset_right = 64.0
+offset_bottom = -79.0
+theme_override_colors/font_color = Color(3.56168e-06, 0.402563, 0.537785, 1)
+text = "water = not good"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="ready" from="." to="." method="_on_ready"]
 
+[editable path="Water"]
 [editable path="Water2"]
 [editable path="Portal-blue"]
 [editable path="Portal-blue/Portal"]

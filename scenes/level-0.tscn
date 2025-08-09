@@ -132,6 +132,37 @@ position = Vector2(-9.75, 0)
 [node name="Destination" parent="Portal-orange/Portal/Area2D" index="1"]
 position = Vector2(-166, 2)
 
+[node name="Label" type="Label" parent="."]
+offset_left = -64.0
+offset_top = 38.0
+offset_right = 64.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0, 0.44, 0.256667, 1)
+text = "Hole 1
+2 strokes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 342.0
+offset_top = -573.0
+offset_right = 413.0
+offset_bottom = -544.0
+theme_override_colors/font_color = Color(0, 0.44, 0.256667, 1)
+text = "portals..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 487.0
+offset_top = -573.0
+offset_right = 558.0
+offset_bottom = -544.0
+theme_override_colors/font_color = Color(0, 0.44, 0.256667, 1)
+text = "teleport"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="ready" from="." to="." method="_on_ready"]
 
 [editable path="Player"]
