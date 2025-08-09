@@ -4,9 +4,7 @@ const BASE_SPEED = 1200
 const SLOWDOWN_SPEED = 200
 const BOUNCE_LOSS = 0.4 # 0.4 -> 40 % speed loss on bounce
 const AIM_DEADZONE = 0.2
-
-const INPUT_METHOD = "controller"
-
+const MOUSE_SENSITIVITY = 3 # magic value
 var direction = Vector2i(0, 0)
 @onready var arrow: Sprite2D = $Arrow
 
@@ -20,12 +18,12 @@ func _ready() -> void:
 	InputMap.action_set_deadzone("right", AIM_DEADZONE)
 	InputMap.action_set_deadzone("up", AIM_DEADZONE)
 	InputMap.action_set_deadzone("down", AIM_DEADZONE)
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	Ball.last_position = global_position
 	Ball.stopped = false
 	last_pos = global_position
 
 func _physics_process(delta: float) -> void:
-	print(Ball.strokes)
 	if last_velocity == velocity:
 		Ball.velocity = last_velocity
 	else:
@@ -35,7 +33,12 @@ func _physics_process(delta: float) -> void:
 		velocity = Ball.velocity
 	
 	# x and y
-	var inputs = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
+	
+	var inputs = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down")) if Ball.using_controller else get_global_mouse_position() - global_position 
+	if not Ball.using_controller:
+		inputs.x /= 100 * MOUSE_SENSITIVITY
+		inputs.y /= 100 * MOUSE_SENSITIVITY
+	
 	var confirmed = Input.is_action_just_pressed("shoot")
 
 	if velocity.x == 0.0 and velocity.y == 0.0 and last_pos == global_position:
@@ -46,11 +49,12 @@ func _physics_process(delta: float) -> void:
 
 	last_pos = global_position
 	
-	# handle arrow showing only when aiming
+	
 	if Ball.stopped == true and (inputs.x != 0.0 or inputs.y != 0.0):
 		arrow.show()
 		# distance from joystick middle
-		var distance_from_middle = sqrt(inputs.x ** 2 + inputs.y ** 2)
+		var distance_from_middle = sqrt(inputs.x ** 2 + inputs.y ** 2) if Ball.using_controller else clamp((2 * PI * (sqrt(inputs.x ** 2 + inputs.y ** 2))) / MOUSE_SENSITIVITY, 0.0, 1.0)
+		
 		arrow.scale = Vector2((1 +distance_from_middle)**2 + clamp(distance_from_middle, 0.0, 1.0), arrow.scale.y)
 		arrow.modulate = Color(ARROW_GRADIENT.sample(distance_from_middle))
 	else:
@@ -58,11 +62,10 @@ func _physics_process(delta: float) -> void:
 
 	if Ball.stopped:
 		global_position = Ball.current_position
-		if INPUT_METHOD == "controller":
+		if Ball.using_controller:
 			look_at(position + inputs.normalized())
 		else:
 			look_at(get_global_mouse_position())
-
 		
 		if confirmed:
 			Ball.strokes += 1
