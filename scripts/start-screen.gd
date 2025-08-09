@@ -19,7 +19,7 @@ func _on_ready() -> void:
 	else:
 		input.text = "Input: mouse only"
 		Ball.using_controller = false
-
+		
 
 func _on_input_pressed() -> void:
 	if bool(len(Input.get_connected_joypads())):
