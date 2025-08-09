@@ -23,7 +23,7 @@ func _on_visibility_changed() -> void:
 			
 		next_level_button.grab_focus()
 	
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	else:
 		star_1.hide()
 		star_2.hide()

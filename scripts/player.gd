@@ -18,7 +18,7 @@ func _ready() -> void:
 	InputMap.action_set_deadzone("right", AIM_DEADZONE)
 	InputMap.action_set_deadzone("up", AIM_DEADZONE)
 	InputMap.action_set_deadzone("down", AIM_DEADZONE)
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	Ball.last_position = global_position
 	Ball.stopped = false
 	last_pos = global_position
@@ -53,7 +53,7 @@ func _physics_process(delta: float) -> void:
 	if Ball.stopped == true and (inputs.x != 0.0 or inputs.y != 0.0):
 		arrow.show()
 		# distance from joystick middle
-		var distance_from_middle = sqrt(inputs.x ** 2 + inputs.y ** 2) if Ball.using_controller else clamp((2 * PI * (sqrt(inputs.x ** 2 + inputs.y ** 2))) / MOUSE_SENSITIVITY, 0.0, 1.0)
+		var distance_from_middle = sqrt(inputs.x ** 2 + inputs.y ** 2) if Ball.using_controller else clamp((2 * PI * (sqrt(inputs.x ** 2 + inputs.y ** 2))) / 15, 0.0, 1.0)
 		
 		arrow.scale = Vector2((1 +distance_from_middle)**2 + clamp(distance_from_middle, 0.0, 1.0), arrow.scale.y)
 		arrow.modulate = Color(ARROW_GRADIENT.sample(distance_from_middle))
